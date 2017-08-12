@@ -5,7 +5,6 @@ project(AlgorithmCompetition)
 
 
 
-add_subdirectory("algorithm competition portal classic")
-add_subdirectory("competition code")
+add_subdirectory("2017 star of baidu")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++0x")
