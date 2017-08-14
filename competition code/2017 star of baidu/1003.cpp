@@ -42,7 +42,7 @@ void insertSort_0(int arr[], int length)
     }
 }
 LL  getDp(LL hp,LL defense){
-    printf("hp:%lld,defense:%lld\n",hp,defense);
+//    printf("hp:%lld,defense:%lld\n",hp,defense);
     if (isDped[hp][defense] == 0) { // 如果为0表示需要计算
         for(int u=0;u<m;u++)//第u个技能
         {
@@ -63,6 +63,10 @@ LL  getDp(LL hp,LL defense){
             }
             else
             {
+                if(isDped[hp][defense] == 0){
+                    dp[hp][defense]=1e18;
+                    isDped[hp][defense] = 1;
+                }
                 dp[hp][defense]=min(getDp(hp,defense),getDp(hp-dmg,defense)+k[u]);
                 if(u == m -1){
                     return dp[hp][defense];
@@ -77,12 +81,12 @@ LL  getDp(LL hp,LL defense){
 
 int main() {
     while (scanf("%d%d", &n, &m) != EOF) {
-        printf("n:%d,m:%d\n",n,m);
+//        printf("n:%d,m:%d\n",n,m);
         LL upB=0/*最高防御*/,upP=0/*最高攻击*/,hp=0;/*最高生命*/
         for(int i=0; i<n; i++)
         {
             scanf("%lld%lld",&a[i],&b[i]);
-            printf("a:%lld,b:%lld\n",a[i],b[i]);
+//            printf("a:%lld,b:%lld\n",a[i],b[i]);
             upB=max(upB,b[i]);
             hp=max(hp,a[i]);
         }
@@ -90,7 +94,7 @@ int main() {
         for(int i=0; i<m; i++)
         {
             scanf("%lld%lld",&k[i],&p[i]);
-            printf("k:%lld,p:%lld\n",k[i],p[i]);
+//            printf("k:%lld,p:%lld\n",k[i],p[i]);
             upP=max(upP,p[i]);
         }
         if(upB>=upP)
